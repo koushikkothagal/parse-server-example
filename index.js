@@ -19,7 +19,28 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  }
+  },
+  // Enable email verification
+  verifyUserEmails: true,
+  // The public URL of your app.
+  // This will appear in the link that is used to verify email addresses and reset passwords.
+  // Set the mount path as it is in serverURL
+    publicServerURL: 'https://javabrains-parse.herokuapp.com/parse',
+    // Your apps name. This will appear in the subject and body of the emails that are sent.
+    appName: 'Java Brains',
+    // The email adapter
+    emailAdapter: {
+        module: 'parse-server-simple-mailgun-adapter',
+        options: {
+            // The address that your emails come from
+            fromAddress: 'admin@javabrains.io',
+            // Your domain from mailgun.com
+            domain: 'app0f73bb9e90f44d8ea0317876023d4383.mailgun.org',
+            // Your API key from mailgun.com
+            apiKey: 'key-4e6a489c24b846e5fb9821b18370fd49',
+        }
+    }
+    
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
