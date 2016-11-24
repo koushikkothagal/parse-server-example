@@ -35,9 +35,9 @@ var api = new ParseServer({
             // The address that your emails come from
             fromAddress: 'admin@javabrains.io',
             // Your domain from mailgun.com
-            domain: 'app0f73bb9e90f44d8ea0317876023d4383.mailgun.org',
+            domain: 'javabrains.io',
             // Your API key from mailgun.com
-            apiKey: 'key-4e6a489c24b846e5fb9821b18370fd49',
+            apiKey: process.env.JB_MAILGUN_KEY || 'key-4e6a489c24b846e5fb9821b18370fd49',
         }
     }
     
